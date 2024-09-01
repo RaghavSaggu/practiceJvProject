@@ -1,4 +1,4 @@
-package others;
+package stringRelated;
 
 public class StringBufferAndObjectDiff {
     public void matchTheStrings () {

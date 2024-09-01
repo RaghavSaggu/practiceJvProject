@@ -1,4 +1,4 @@
-package others;
+package stringRelated;
 
 import java.util.Arrays;
 import java.util.List;
