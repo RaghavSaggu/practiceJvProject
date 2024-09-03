@@ -16,8 +16,8 @@ public class MinimumFromIntegers {
 
         List<Integer> intList = Arrays.stream(intArr).boxed().collect(Collectors.toList());
         // another way
-        minValue = intList.stream().map(v -> Integer.valueOf((int) v)).min(Integer::compare).get();
-        maxValue = intList.stream().map(v -> Integer.valueOf((int) v)).max(Integer::compare).get();
+        minValue = intList.stream().min(Integer::compare).get();
+        maxValue = intList.stream().max(Integer::compare).get();
         System.out.print("Min was : " + minValue);
         System.out.println(", Max was : " + maxValue);
 
