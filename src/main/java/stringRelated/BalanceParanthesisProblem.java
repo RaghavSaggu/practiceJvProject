@@ -4,10 +4,8 @@ import java.util.Stack;
 
 public class BalanceParanthesisProblem {
     public static void main(String[] args) {
-        String input = "{[()]}";
-//        if (isBalancedGivenOpeningAndClosing(input, '(', ')') &&
-//                isBalancedGivenOpeningAndClosing(input, '{', '}') &&
-//                isBalancedGivenOpeningAndClosing(input, '[', ']'))
+        String input = "{[(])}";
+//        if (isBalancedGivenOpeningAndClosing(input, '(', ')'))
 //        if (isBalancedUsingStrBuilder(input))
         if (isBalancedUsingStack(input))
         {
@@ -27,19 +25,16 @@ public class BalanceParanthesisProblem {
                     stack.push(c);
                     break;
                 case ')':
-                    if (stack.isEmpty() || stack.pop() != '(') {
+                    if (stack.isEmpty() || stack.pop() != '(')
                         return false;
-                    }
                     break;
                 case '}':
-                    if (stack.isEmpty() || stack.pop() != '{') {
+                    if (stack.isEmpty() || stack.pop() != '{')
                         return false;
-                    }
                     break;
                 case ']':
-                    if (stack.isEmpty() || stack.pop() != '[') {
+                    if (stack.isEmpty() || stack.pop() != '[')
                         return false;
-                    }
                     break;
                 default: // Ignore non-parenthesis characters
                     break;
@@ -50,6 +45,7 @@ public class BalanceParanthesisProblem {
     }
 
     public static boolean isBalancedGivenOpeningAndClosing(String s, char openingParan,  char closingParan) {
+        String predefinedSetOfOpening = "{[(", predefinedSetOfClosing = "}])";
         int balance = 0; // Counter for open parentheses
         for (char c : s.toCharArray()) {
             if (c == openingParan) {
