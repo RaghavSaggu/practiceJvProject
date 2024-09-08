@@ -34,6 +34,5 @@ public class MinMaxFromIntegers {
         System.out.println("Using stream sorting");
         System.out.print("Min was : " + sortedList.get(0));
         System.out.println(", Max was : " + sortedList.get(sortedList.size() - 1));
-
     }
 }

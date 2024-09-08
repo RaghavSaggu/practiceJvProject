@@ -3,10 +3,10 @@ package arrays;
 public class FindMidIndexOfSumOfSameSets {
     public static void main(String[] args) {
         long[] arr = {2,2,1,1,5,6,-2,1,1};
-        System.out.println(callWorkerMethod(arr, arr.length));
+        System.out.println(workerMethod(arr, arr.length));
     }
 
-    private static int callWorkerMethod(long[] arr, int length) {
+    private static int workerMethod(long[] arr, int length) {
         if(arr.length <= 0 || arr.length != length)
             return 0;
         int lenArr = length, response = 0;
