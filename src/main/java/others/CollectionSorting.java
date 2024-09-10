@@ -1,32 +1,31 @@
 package others;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class CollectionSorting {
     public static void main(String[] args) {
-        comparableAndComparator();
+        List<Student> students = Arrays.asList(new Student(30, "Raghav"),
+                new Student(32, "Karan"),
+                new Student(31, "Ritu"),
+                new Student(31, "Abhishek"),
+                new Student(26, "Kanika"),
+                new Student(29, "Harish"),
+                new Student(29, "Raghav"));
+
+        students.forEach(System.out::println);
+        System.out.println("================================= Printing same post operation =================================");
+        printSortedUsingComparator(students);
     }
 
-    private static void comparableAndComparator() {
-        Comparator<Student> studentNameWiseComparator = (o1, o2) -> o1.name.compareTo(o2.name) != 0 ? o1.name.compareTo(o2.name) : o1.age.compareTo(o2.age);
-
-        List<Student> students = new ArrayList();
-        students.add(new Student(30, "Raghav"));
-        students.add(new Student(32, "Karan"));
-        students.add(new Student(31, "Ritu"));
-        students.add(new Student(31, "Abhishek"));
-        students.add(new Student(26, "Kanika"));
-        students.add(new Student(29, "Harish"));
-        students.add(new Student(29, "Raghav"));
-
+    private static void printSortedUsingComparable(List<Student> students) {
         Collections.sort(students);
-        students.forEach(stud -> System.out.println(stud));
-//        System.out.println("Using comparator");
-//        Collections.sort(students, studentNameWiseComparator);
-//        students.forEach(stud -> System.out.println(stud));
+        students.forEach(System.out::println);
+    }
+
+    private static void printSortedUsingComparator(List<Student> students) {
+        Comparator<Student> studentNameWiseComparator = (s1, s2) -> s1.name.compareTo(s2.name) != 0 ? s1.name.compareTo(s2.name) : s1.age.compareTo(s2.age);
+        Collections.sort(students, studentNameWiseComparator);
+        students.forEach(System.out::println);
     }
 
     static class Student implements Comparable<Student> {
@@ -44,8 +43,8 @@ public class CollectionSorting {
         }
 
         @Override
-        public int compareTo(Student o) {
-            return this.age.compareTo(o.age) != 0 ? this.age.compareTo(o.age) : this.name.compareTo(o.name);
+        public int compareTo(Student comparingStudent) {
+            return this.age.compareTo(comparingStudent.age) != 0 ? this.age.compareTo(comparingStudent.age) : this.name.compareTo(comparingStudent.name);
         }
     }
 }
