@@ -11,15 +11,15 @@ public class MakeStringValidByRemovingMinParentheses {
         System.out.println("Valid strings after removing minimum parentheses: " + result);
     }
 
-    private static List<String> removeInvalidParentheses(String s) {
+    private static List<String> removeInvalidParentheses(String str) {
         List<String> result = new ArrayList<>();
-        if (s == null) return result;
+        if (str == null) return result;
 
         Set<String> visited = new HashSet<>();
         Queue<String> queue = new LinkedList<>();
 
-        queue.offer(s);
-        visited.add(s);
+        queue.offer(str);
+        visited.add(str);
 
         boolean found = false;
 
@@ -30,7 +30,7 @@ public class MakeStringValidByRemovingMinParentheses {
             if (isValid(current)) {
                 result.add(current);
                 found = true;
-            }
+            } //else found = false;
 
             // If we found valid strings, no need to generate further levels
             if (found) continue;
@@ -50,9 +50,9 @@ public class MakeStringValidByRemovingMinParentheses {
         return result;
     }
 
-    private static boolean isValid(String s) {
+    private static boolean isValid(String str) {
         int counter = 0;
-        for (char c : s.toCharArray()) {
+        for (char c : str.toCharArray()) {
             if (c == '(') counter++;
             if (c == ')') counter--;
             if (counter < 0) return false;
