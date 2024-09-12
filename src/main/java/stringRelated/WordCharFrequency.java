@@ -1,6 +1,6 @@
 package stringRelated;
 
-import others.DemoFuncInterface;
+import collectionAndStreams.DemoFuncInterface;
 
 import java.util.Map;
 import java.util.TreeMap;

@@ -1,4 +1,4 @@
-package others;
+package logical;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;

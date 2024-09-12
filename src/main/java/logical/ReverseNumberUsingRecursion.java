@@ -1,4 +1,4 @@
-package others;
+package logical;
 
 public class ReverseNumberUsingRecursion {
     public static void main(String[] args) {

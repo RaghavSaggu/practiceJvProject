@@ -1,4 +1,4 @@
-package others;
+package collectionAndStreams;
 
 @FunctionalInterface
 public interface DemoFuncInterface {

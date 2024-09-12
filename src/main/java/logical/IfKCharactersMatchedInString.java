@@ -1,7 +1,4 @@
-package others;
-
-import java.util.Arrays;
-import java.util.List;
+package logical;
 
 public class IfKCharactersMatchedInString {
 

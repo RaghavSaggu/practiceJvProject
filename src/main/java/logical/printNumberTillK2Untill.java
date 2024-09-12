@@ -1,4 +1,4 @@
-package others;
+package logical;
 
 public class printNumberTillK2Untill {
     private static void printNumberTillK(int K, int untill) {

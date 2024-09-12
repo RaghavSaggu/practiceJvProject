@@ -1,4 +1,4 @@
-package others;
+package logical;
 
 public class ArmstrongNumber {
     public static void main(String[] args) {
