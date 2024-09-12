@@ -20,3 +20,10 @@ public class FindNthNumberFromListUsingStreams {
         return listOfIntegers.stream().sorted(Integer::compareTo).skip(i-1).findFirst().orElse(null);
     }
 }
+
+
+//    SELECT c.Name from
+//    customer c
+//    join orders o on c.cust_id = o.cust_id where
+//    GROUP BY c.cust_id, c.cust_name
+//    HAVING count(o.order_id) >2 AND SUM(o.amount) > 300;
