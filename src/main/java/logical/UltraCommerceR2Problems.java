@@ -2,7 +2,6 @@ package logical;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class UltraCommerceR2Problems {
     static boolean iterationsFlag = true;
@@ -23,7 +22,7 @@ public class UltraCommerceR2Problems {
         printIterations();
 
         System.out.println();
-        int N = 5, divisor = 0;
+        int N = 122, divisor = 5;
         System.out.println("Closest number to " + N + " divisible by " + divisor + " is: " + getGreatestClosestValueMulByDivisorToNum(N, divisor));
     }
 
@@ -93,7 +92,7 @@ public class UltraCommerceR2Problems {
 
     private static void printIterations() {
         if (iterationsFlag) {
-            System.out.println("Total iterations done: " + iterations);
+            System.out.println("   <-[Total iterations done: " + iterations + "]");
             iterations = 0;
         }
     }
