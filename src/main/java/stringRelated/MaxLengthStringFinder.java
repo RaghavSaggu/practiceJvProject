@@ -33,11 +33,10 @@ public class MaxLengthStringFinder {
             throw new IllegalArgumentException("List cannot be null or empty");
         }
         Map<Integer, String> map = strings.stream()
-                .collect(Collectors.groupingBy(s -> Integer.valueOf(s.length()), Collectors.joining()));
-        String longest = (map != null && !map.keySet().isEmpty())
-                ? map.get(map.keySet().stream().max(Integer::compareTo).get())
+                .collect(Collectors.groupingBy(String::length, Collectors.joining()));
+        return !map.keySet().isEmpty()
+                ? map.get(map.keySet().stream().max(Integer::compareTo).orElse(null))
                 : null;
-        return longest;
     }
 
     public static String findLongestString(List<String> strings) {
