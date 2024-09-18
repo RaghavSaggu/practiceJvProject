@@ -11,7 +11,7 @@ public class MultithreadingPractice {
         }
 
         ThreadedKlass thread = new ThreadedKlass();
-        thread.setName("Thread"); // renaming current thread
+        thread.setName("VirtualThread"); // renaming current thread
         thread.setPriority(1);
         thread.setDaemon(true);
 
@@ -54,6 +54,11 @@ class CallableKlass implements Callable<Long> {
             for (int i = num; i > 1; i--) {
                 System.out.println("=== " + Thread.currentThread().getName() + " Callable" + (Thread.currentThread().isDaemon() ? "(Daemon):" : ":") + i);
                 factorial = factorial * i;
+                try {
+                    ThreadedKlass.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
             return factorial;
         } catch (Exception e) {

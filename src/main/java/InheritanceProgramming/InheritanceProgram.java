@@ -22,6 +22,29 @@ class Parent {
     public static void showStatic() {
         System.out.println("Static method in Parent");
     }
+
+    public void run() {
+        System.out.println("parent is running");
+        walk();
+    }
+
+    public void walk() {
+        System.out.println("parent is walking");
+    }
+}
+
+class Child extends Parent {
+    @Override
+    public void run() {
+        System.out.println("child is running");
+        super.run();
+    }
+
+    @Override
+    public void walk() {
+        System.out.println("child is walking");
+        super.walk();
+    }
 }
 
 interface FatherInterface {
@@ -40,23 +63,16 @@ interface MotherInterface {
     }
 }
 
-public class InheritanceProgram extends Parent implements FatherInterface, MotherInterface {
-
-    public static void main(String... args) {
-        InheritanceProgram runner = new InheritanceProgram();
-        runner.runnerMethod();
-    }
-
+class Runner extends Parent implements FatherInterface, MotherInterface {
     public void runnerMethod() {
-        InheritanceProgram obj = new InheritanceProgram();
-        Parent objOfParent = new InheritanceProgram();
-        FatherInterface interfaceObject = new InheritanceProgram();
+        Runner obj = new Runner();
+        FatherInterface objOfFather = new Runner();
+        MotherInterface objOfMother = new Runner();
 
         obj.show();
         super.show();
         obj.show();
-        interfaceObject.show();
-        objOfParent.show();
+        objOfFather.show();
         obj.showFinal();
         showStatic();
         Parent.showStatic();
@@ -74,6 +90,14 @@ public class InheritanceProgram extends Parent implements FatherInterface, Mothe
 
     public static void showStatic() {
         System.out.println("Static method in Test");
+    }
+}
+
+public class InheritanceProgram {
+
+    public static void main(String... args) {
+        Parent p = new Child();
+        p.run();
     }
 
 }
