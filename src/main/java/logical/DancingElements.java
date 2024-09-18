@@ -1,4 +1,4 @@
-package arrays;
+package logical;
 
 import java.util.Arrays;
 
