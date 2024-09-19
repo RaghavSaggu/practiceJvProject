@@ -4,7 +4,7 @@ import java.io.*;
 
 public class Demo {
     static boolean serialiseObjBeforeDeserialize;
-    static String filePath = "C:\\Users\\Raghav\\Documents\\Java\\demoProject\\files\\serialzedObject.ser";
+    static String filePath = ".\\files\\serialzedObject.ser";
 
     public static void main(String[] args) {
         Demo runnerObject = new Demo();
