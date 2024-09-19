@@ -13,8 +13,8 @@ public class Demo {
             runnerObject.saveObjectToFile(object, filePath);
         }
 
-        SomeObjectForSerDesrDemo readObject = runnerObject.getObjectFromFile(filePath);
-        System.out.println(readObject);
+        SomeObjectForSerDesrDemo object = runnerObject.getObjectFromFile(filePath);
+        System.out.println(object);
     }
 
     public void saveObjectToFile(SomeObjectForSerDesrDemo object, String pathForFile) {
