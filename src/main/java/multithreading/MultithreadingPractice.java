@@ -5,20 +5,53 @@ import java.util.concurrent.*;
 public class MultithreadingPractice {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
+        MultithreadingPractice obj = new MultithreadingPractice();
+        obj.letSeeThreadSafeExample();
+    }
+
+    public void letSeeThreadSafeExample() throws InterruptedException {
+        Counter counter = new Counter();
+        Counter counterThreadSafe = new Counter();
+        Runnable r1 = () -> {
+            for (int i = 0; i < 1000; i++) {
+                counter.increment();
+                counterThreadSafe.threadSafeIncrement();
+            }
+        };
+        Runnable r2 = () -> {
+            for (int i = 0; i < 1000; i++) {
+                counter.increment();
+                counterThreadSafe.threadSafeIncrement();
+            }
+        };
+
+        Thread t1 = new Thread(r1);
+        Thread t2 = new Thread(r2);
+
+        t1.start();
+        t2.start();
+
+        t1.join(); // wait till t1 joins main method
+        t2.join(); // wait till t2 joins main method
+
+        System.out.println("Counter after completion for all threads with normal method " + counter.getCounter());
+        System.out.println("Counter after completion for all threads with threadSafe method " + counterThreadSafe.getCounter());
+    }
+
+    public void letSeeWorkingOfMainThread() {
         Thread.currentThread().setName("MainThread"); // renaming the main thread
         for (int i = 1; i <= 5; i++) {
             System.out.println(Thread.currentThread().getName() + " thread" + (Thread.currentThread().isDaemon() ? "(Daemon):" : ":") + i);
         }
+    }
 
+    public void runThreadRunnableAndCallable() throws ExecutionException, InterruptedException {
         ThreadedKlass thread = new ThreadedKlass();
         thread.setName("VirtualThread"); // renaming current thread
         thread.setPriority(1);
         thread.setDaemon(true);
 
-        Runnable runnableKlass = () -> {
-            for (int i = 1; i <= 10; i++)
-                System.out.println("=== " + Thread.currentThread().getName() + " runnable" + (Thread.currentThread().isDaemon() ? "(Daemon):" : ":") + i);
-        };
+        Runnable runnableKlass = new RunnableKlass();
         Thread threadForRunnable = new Thread(runnableKlass);
         threadForRunnable.setName("Runnable"); // renaming current thread
         threadForRunnable.setPriority(9);
@@ -34,9 +67,34 @@ public class MultithreadingPractice {
         executorService.submit(runnableKlass);
 
         executorService.shutdown();
+
         System.out.println("factorial of " + numberToGetFactorial + " is: " + result.get());
 //        threadForRunnable.start(); // can not start again same thread
 
+    }
+}
+
+class Counter {
+    private long counter;
+
+    public void increment() {
+        counter++;
+    }
+
+    public synchronized void threadSafeIncrement() { // we can make methods threadSafe with synchronized keyword
+        counter++;
+    }
+
+    public long getCounter() {
+        return counter;
+    }
+}
+
+class RunnableKlass implements Runnable {
+    @Override
+    public void run() {
+        for (int i = 1; i <= 10; i++)
+            System.out.println("=== " + Thread.currentThread().getName() + " runnable" + (Thread.currentThread().isDaemon() ? "(Daemon):" : ":") + i);
     }
 }
 
