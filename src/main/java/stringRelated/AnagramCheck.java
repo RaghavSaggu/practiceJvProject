@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class AnagramCheck {
     public static void main(String[] args) {
         String str1 = "listen", str2 = "silent";
-        boolean isAnagram = checkIfStringsAnagram(str1, str2);
+        boolean isAnagram = checkIfStringsAnagram2(str1, str2);
         if(isAnagram)
             System.out.println(str1 + " and " + str2 + " are anagram");
         else
@@ -17,8 +17,6 @@ public class AnagramCheck {
             System.out.println("NULL String not allowed");
             return false;
         }
-        if(str1.isEmpty() && str2.isEmpty())
-            return true;
         if(str1.isEmpty() || str2.isEmpty())
             return false;
 
@@ -27,5 +25,21 @@ public class AnagramCheck {
         Arrays.sort(arr1);
         Arrays.sort(arr2);
         return Arrays.equals(arr1, arr2);
+    }
+
+    public static boolean checkIfStringsAnagram2(String str1, String str2) {
+        if(str1.length() != str2.length())
+            return false;
+        char[] a1 = str1.toCharArray();
+        char[] a2 = str2.toCharArray();
+
+        Arrays.sort(a1);
+        Arrays.sort(a2);
+
+        for(int i = 0; i<a1.length; i++) {
+            if(a1[i] != a2[i])
+                return false;
+        }
+        return true;
     }
 }
