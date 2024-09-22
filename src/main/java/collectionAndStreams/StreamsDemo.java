@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.function.BinaryOperator;
 
 public class StreamsDemo {
     public static void main(String[] args) {
         StreamsDemo streamsDemo = new StreamsDemo();
-//        streamsDemo.streamDemoWithArray();
-        StringBuffer s = new StringBuffer("test");
-        s.trimToSize();
-        System.out.println(s.capacity());
+        streamsDemo.sequentialAndParallelStreamWithReduceDemo();
     }
 
     public void streamDemoWithArray() {
@@ -80,7 +78,13 @@ public class StreamsDemo {
         System.out.println("Using parallel stream on reduce sum is " + sum + ", and time taken: " + (endTime - startTime));
 
         startTime = System.currentTimeMillis();
-        sum = randomNumList.stream().reduce(0, Integer::sum);
+        BinaryOperator<Integer> binaryOperator = new BinaryOperator<Integer>() {
+            @Override
+            public Integer apply(Integer o, Integer o2) {
+                return o + o2;
+            }
+        };
+        sum = randomNumList.stream().reduce(0, binaryOperator);
         endTime = System.currentTimeMillis();
         System.out.println("Using sequential stream on reduce sum is " + sum + ", and time taken: " + (endTime - startTime));
     }
