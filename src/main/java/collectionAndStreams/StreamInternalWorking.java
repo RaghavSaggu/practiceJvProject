@@ -2,12 +2,13 @@ package collectionAndStreams;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StreamInternalWorking {
     public static void main(String[] args) {
-        List<Integer> list = Arrays.asList(11, 12, 33, 84, 15, 16, 11, 12, 35, 66, 57, 68, 65, 43, 22, 22);
+        List<Integer> list = Arrays.asList(1,2,3,4,5);
         StreamInternalWorking stream = new StreamInternalWorking();
-        stream.streamDemo(list);
+        stream.streamDemoReduce(list);
     }
 
     private void streamDemo(List<Integer> list) {
@@ -32,6 +33,32 @@ public class StreamInternalWorking {
                     return result;
                 }).limit(3)
                 .mapToInt(i -> i).sum());
+    }
+
+    private void streamDemoReduce(List<Integer> list) {
+        System.out.println("Answer is: " + list.stream()
+                .filter(i -> {
+                    boolean result = i % 2 == 0;
+                    System.out.println(i + " filter: " + result);
+                    return result;
+                })
+                .reduce(0, (c,e) -> {
+                    System.out.println("C + E :" + c + " + " + e);
+                    return c + e;
+                }));
+    }
+
+    private void streamDemoCollectorsReducing(List<Integer> list) {
+        System.out.println("Answer is: " + list.stream()
+                .filter(i -> {
+                    boolean result = i % 2 == 0;
+                    System.out.println(i + " filter: " + result);
+                    return result;
+                })
+                .collect(Collectors.reducing(0, (c,e) -> {
+                    System.out.println("C + E :" + c + " + " + e);
+                    return c + e;
+                })));
     }
 
     private void parallelStreamDemo(List<Integer> list) {
