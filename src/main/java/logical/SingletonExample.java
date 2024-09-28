@@ -32,8 +32,8 @@ public class SingletonExample {
         Constructor<Singleton> constructor = (Constructor<Singleton>) clazz.getDeclaredConstructor();
         constructor.setAccessible(true);
         Singleton brokenSingletonInstance = constructor.newInstance();
-        System.out.println("Hashcode of originalSingletonInstance was: " + originalSingletonInstance.hashCode());
-        System.out.println("Hashcode of brokenSingletonInstance is: " + brokenSingletonInstance.hashCode());
+        System.out.println("Hashcode of originalSingletonInstance was: " + originalSingletonInstance.hashCode() + ", and object: " + originalSingletonInstance);
+        System.out.println("Hashcode of brokenSingletonInstance is: " + brokenSingletonInstance.hashCode() + ", and object: " + brokenSingletonInstance);
         System.out.println("======================================================================================================================");
     }
 
@@ -47,8 +47,8 @@ public class SingletonExample {
         ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(".\\files\\serializationInSingleton.ser"));
         Singleton brokenSingletonInstanceUsingSerialization = (Singleton) inputStream.readObject();
         inputStream.close();
-        System.out.println("Hashcode of originalSingletonInstance was: " + originalSingletonInstance.hashCode());
-        System.out.println("Hashcode of brokenSingletonInstanceUsingSerialization is: " + brokenSingletonInstanceUsingSerialization.hashCode());
+        System.out.println("Hashcode of originalSingletonInstance was: " + originalSingletonInstance.hashCode() + ", and object: " + originalSingletonInstance);
+        System.out.println("Hashcode of brokenSingletonInstanceUsingSerialization is: " + brokenSingletonInstanceUsingSerialization.hashCode() + ", and object: " + brokenSingletonInstanceUsingSerialization);
         System.out.println("======================================================================================================================");
     }
 
@@ -56,8 +56,8 @@ public class SingletonExample {
         System.out.println("======================================================================================================================");
         // let break the singleton class using Cloneable
         Singleton brokenSingletonInstanceUsingClone = originalSingletonInstance.clone();
-        System.out.println("Hashcode of originalSingletonInstance was: " + originalSingletonInstance.hashCode());
-        System.out.println("Hashcode of brokenSingletonInstanceUsingClone is: " + brokenSingletonInstanceUsingClone.hashCode());
+        System.out.println("Hashcode of originalSingletonInstance was: " + originalSingletonInstance.hashCode() + ", and object: " + originalSingletonInstance);
+        System.out.println("Hashcode of brokenSingletonInstanceUsingClone is: " + brokenSingletonInstanceUsingClone.hashCode() + ", and object: " + brokenSingletonInstanceUsingClone);
         System.out.println("======================================================================================================================");
     }
 }
