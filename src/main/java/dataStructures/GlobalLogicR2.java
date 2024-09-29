@@ -1,9 +1,22 @@
 package dataStructures;
 
-public class MissingValueFinder {
+public class GlobalLogicR2 {
     // GlobalLogic 2nd round of interview
     public static void main(String[] args) {
         findMissingValue();
+//        printArray();
+    }
+
+    public static void printArray() {
+        String[] strArr = {"One", "Two", "Three"};
+        Integer[] intArr = {1, 2, 3, 4, 5};
+        printArrayGeneric(intArr);
+    }
+
+    public static void printArrayGeneric(Object[] arr) {
+        for (Object o : arr) {
+            System.out.println(o);
+        }
     }
 
     public static void useSomeBitwiseOrShiftOperators(int arg) {
