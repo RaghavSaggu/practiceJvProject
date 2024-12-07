@@ -12,6 +12,7 @@ public class MaxRepeatAllowedUpto2 {
         int[] list = runner.removeRepeatedNumbersFromArray(arr);
         System.out.println("Total elements in list (repeated max 2): " + list.length);
         Arrays.stream(list).forEach(element -> System.out.print(element + " "));
+        System.out.println("\n======================================= END =======================================");
     }
 
     public int[] removeRepeatedNumbersFromArray(int[] arr) {
